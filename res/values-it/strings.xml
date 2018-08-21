@@ -17,19 +17,19 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="provider_title">Weather provider</string>
-  <string name="units_title">Unit</string>
-  <string name="weather_progress_title">Verifying location</string>
-  <string name="weather_select_location">Select location</string>
-  <string name="custom_location_title">Custom location</string>
-  <string name="weather_custom_location_dialog_title">Enter location</string>
-  <string name="weather_custom_location_title">Location</string>
-  <string name="weather_custom_location_missing">Set custom location</string>
-  <string name="weather_retrieve_location_dialog_title">Cannot retrieve location!</string>
-  <string name="weather_retrieve_location_dialog_message">Network geolocation is disabled.\n\nSet a custom location or enable network location</string>
-  <string name="weather_retrieve_location_dialog_enable_button">Enable</string>
-  <string name="settings_title">Settings</string>
-  <string name="auto_update_title">Automatic updates</string>
+  <string name="provider_title">Provider meteo</string>
+  <string name="units_title">Unità</string>
+  <string name="weather_progress_title">Verifica della località</string>
+  <string name="weather_select_location">Seleziona la località</string>
+  <string name="custom_location_title">Località personalizzata</string>
+  <string name="weather_custom_location_dialog_title">Inserisci località</string>
+  <string name="weather_custom_location_title">Località</string>
+  <string name="weather_custom_location_missing">Imposta una località personalizzata</string>
+  <string name="weather_retrieve_location_dialog_title">Impossibile rilevare la posizione!</string>
+  <string name="weather_retrieve_location_dialog_message">La localizzazione tramite la rete è disattivata.\n\nImposta una posizione personalizzata o attiva la localizzazione tramite la rete</string>
+  <string name="weather_retrieve_location_dialog_enable_button">Attiva</string>
+  <string name="settings_title">Impostazioni</string>
+  <string name="auto_update_title">Aggiornamenti automatici</string>
   <string name="unit_metric">Usa le unità metriche (\u00b0C)</string>
   <string name="unit_imperial">Usa le unità imperiali (\u00b0F)</string>
   <string name="update">Aggiornamento</string>
@@ -53,7 +53,7 @@
   <string name="omnijaws_service_disabled">Servizio disattivato</string>
   <string name="weather_widget">Meteo</string>
   <string name="omnijaws_current_text">Adesso</string>
-  <string name="show_background_title">Background shadow</string>
+  <string name="show_background_title">Ombra dello sfondo</string>
   <string name="weather_config_title">Impostazioni servizio meteo</string>
   <string name="weather_config_summary"></string>
 </resources>

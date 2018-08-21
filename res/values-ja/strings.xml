@@ -27,7 +27,7 @@
   <string name="weather_custom_location_missing">その他の場所を設定する</string>
   <string name="weather_retrieve_location_dialog_title">場所を取得できません！</string>
   <string name="weather_retrieve_location_dialog_message">ネットワークを使った現在地の取得が無効になっています。\n\nカスタムの場所を設定するか、ネットワークを利用した位置情報を有効にしてください。</string>
-  <string name="weather_retrieve_location_dialog_enable_button">有効にする</string>
+  <string name="weather_retrieve_location_dialog_enable_button">有効</string>
   <string name="settings_title">設定</string>
   <string name="auto_update_title">自動更新</string>
   <string name="unit_metric">摂氏（\u00b0C）</string>
