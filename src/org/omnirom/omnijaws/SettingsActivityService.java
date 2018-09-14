@@ -31,7 +31,6 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
-import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
@@ -55,7 +54,7 @@ public class SettingsActivityService extends PreferenceActivity implements OnPre
 
     private SharedPreferences mPrefs;
     private ListPreference mProvider;
-    private CheckBoxPreference mCustomLocation;
+    private SwitchPreference mCustomLocation;
     private ListPreference mUnits;
     private SwitchPreference mEnable;
     private boolean mTriggerUpdate;
@@ -89,7 +88,7 @@ public class SettingsActivityService extends PreferenceActivity implements OnPre
         mEnable.setChecked(Config.isEnabled(this));
         mEnable.setOnPreferenceChangeListener(this);
 
-        mCustomLocation = (CheckBoxPreference) findPreference(Config.PREF_KEY_CUSTOM_LOCATION);
+        mCustomLocation = (SwitchPreference) findPreference(Config.PREF_KEY_CUSTOM_LOCATION);
 
         mProvider = (ListPreference) findPreference(Config.PREF_KEY_PROVIDER);
         mProvider.setOnPreferenceChangeListener(this);
