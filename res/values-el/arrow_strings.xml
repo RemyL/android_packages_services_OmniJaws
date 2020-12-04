@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="custom_owm_api_key_title">API key</string>
-    <string name="custom_owm_api_key_summary">Enter your own API key from OpenWeatherMap to ensure staying below the request limit</string>
+    <string name="custom_owm_api_key_title">Κλειδί API</string>
+    <string name="custom_owm_api_key_summary">Εισαγάγετε το δικό σας κλειδί API από το OpenWeatherMap για να διασφαλίσετε ότι παραμένετε κάτω από το όριο αιτημάτων</string>
 </resources>
