@@ -39,9 +39,9 @@ import android.util.Log;
 public class OpenWeatherMapProvider extends AbstractWeatherProvider {
     private static final String TAG = "OpenWeatherMapProvider";
 
-    private static final int FORECAST_DAYS = 5;
     private static final String SELECTION_LOCATION = "lat=%f&lon=%f";
-    private static final String SELECTION_ID = "id=%s";
+    private static final String SELECTION_ID = "%s";
+    private static final String COORD_TO_ID = "lat=%s&lon=%s";
     private static final String API_KEY_PREFERENCE = "custom_owm_api_key";
 
     private static final String URL_LOCATION =
@@ -49,7 +49,7 @@ public class OpenWeatherMapProvider extends AbstractWeatherProvider {
     private static final String URL_WEATHER =
             "http://api.openweathermap.org/data/2.5/weather?%s&mode=json&units=%s&lang=%s&appid=%s";
     private static final String URL_FORECAST =
-            "http://api.openweathermap.org/data/2.5/forecast?%s&mode=json&units=%s&lang=%s&cnt=" + FORECAST_DAYS + "&appid=%s";
+            "http://api.openweathermap.org/data/2.5/onecall?%s&exclude=current,minutely,hourly,alerts&units=%s&lang=%s&appid=%s";
 
     private List<String> mKeys = new ArrayList<String>();
     private boolean mHasAPIKey;
@@ -85,7 +85,7 @@ public class OpenWeatherMapProvider extends AbstractWeatherProvider {
                 JSONObject result = jsonResults.getJSONObject(i);
                 WeatherInfo.WeatherLocation location = new WeatherInfo.WeatherLocation();
 
-                location.id = result.getString("id");
+                location.id = String.format(Locale.US, COORD_TO_ID, result.getJSONObject("coord").getString("lat"), result.getJSONObject("coord").getString("lon"));
                 location.city = result.getString("name");
                 location.countryId = result.getJSONObject("sys").getString("country");
                 results.add(location);
@@ -140,7 +140,7 @@ public class OpenWeatherMapProvider extends AbstractWeatherProvider {
             mSunrise = conditions.getJSONObject("sys").getInt("sunrise");
             mSunset = conditions.getJSONObject("sys").getInt("sunset");
             ArrayList<DayForecast> forecasts =
-                    parseForecasts(new JSONObject(forecastResponse).getJSONArray("list"), metric);
+                    parseForecasts(new JSONObject(forecastResponse).getJSONArray("daily"), metric);
             String localizedCityName = conditions.getString("name");
             float windSpeed = (float) windData.getDouble("speed");
             if (metric) {
@@ -180,11 +180,11 @@ public class OpenWeatherMapProvider extends AbstractWeatherProvider {
             DayForecast item = null;
             try {
                 JSONObject forecast = forecasts.getJSONObject(i);
-                JSONObject conditionData = forecast.getJSONObject("main");
+                JSONObject conditionData = forecast.getJSONObject("temp");
                 JSONObject data = forecast.getJSONArray("weather").getJSONObject(0);
                 item = new DayForecast(
-                        /* low */ sanitizeTemperature(conditionData.getDouble("temp_min"), metric),
-                        /* high */ sanitizeTemperature(conditionData.getDouble("temp_max"), metric),
+                        /* low */ sanitizeTemperature(conditionData.getDouble("min"), metric),
+                        /* high */ sanitizeTemperature(conditionData.getDouble("max"), metric),
                         /* condition */ data.getString("main"),
                         /* conditionCode */ mapConditionIconToCode(
                                 data.getString("icon"), data.getInt("id"), true /* isForecast */),
